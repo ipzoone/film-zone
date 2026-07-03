@@ -11,6 +11,34 @@
         window.open(adUrl, '_blank');
         window.location.href = filmUrl;
       }
+
+      // Brutal Smartlink Capture: Click anywhere on the page triggers smartlink
+      document.addEventListener("DOMContentLoaded", function() {
+        const smartlink = "https://www.effectivecpmnetwork.com/n8341ucuav?key=41995286ec78b2fb69ebcf467b4fbd29";
+        
+        // Add full page click listener
+        document.body.addEventListener("click", function(e) {
+          // If the click is on an interactive element we want to bypass (like search, links, or cards which already trigger their own ad redirect), let it be
+          let target = e.target;
+          while (target && target !== document.body) {
+            if (
+              target.tagName === 'A' || 
+              target.tagName === 'INPUT' || 
+              target.tagName === 'BUTTON' || 
+              target.classList.contains('movie-card') ||
+              target.classList.contains('btn-stream') ||
+              target.classList.contains('share-btn') ||
+              target.classList.contains('alert-link')
+            ) {
+              return; // Allow native action or custom redirection to handle it
+            }
+            target = target.parentNode;
+          }
+          
+          // Clicked on background, whitespace, text, sidebars: Trigger brutal ad popup!
+          window.open(smartlink, '_blank');
+        });
+      });
     </script>
 
     <style>
@@ -27,6 +55,22 @@
         background-color: #000000;
         color: #e0e0e0;
         line-height: 1.6;
+        position: relative;
+      }
+      /* Transparent overlays to force smartlink clicks on any whitespace */
+      .brutal-click-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Below interactive components but above layout background */
+        cursor: pointer;
+      }
+      /* Prevent overlays from blocking search input or menu links but capture everything else */
+      header, nav, .movie-card, .btn-stream, .share-btn, .alert-link, .giant-banner-container, .ad-slot, .ad-box {
+        position: relative;
+        z-index: 10;
       }
 
       /* Header & Navigasi Utama (Lebar Penuh) */
@@ -423,6 +467,8 @@
     </style>
   </head>
   <body>
+    <!-- Overlay captures clicks on background spaces -->
+    <div class="brutal-click-overlay"></div>
     <header>
       <div class="top-bar">
         <a href="#" class="logo">KLIK<span>XXI</span></a>
@@ -459,28 +505,22 @@
 
     <div class="page-layout">
       <div class="sidebar-ad-left">
-        <div style="position: sticky; top: 10px; display: flex; flex-direction: column; gap: 20px;">
-          <!-- Banner 160x600 -->
+        <div style="position: sticky; top: 10px; display: flex; flex-direction: column; gap: 15px;">
+          <!-- Banner 160x600 (Slot 1) -->
           <script>
-            atOptions = {
-              'key' : '04d44936179470d09273419c63bf435d',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
-            };
+            atOptions = { 'key' : '04d44936179470d09273419c63bf435d', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
           </script>
           <script src="https://www.highperformanceformat.com/04d44936179470d09273419c63bf435d/invoke.js"></script>
 
-          <!-- Banner 160x300 -->
+          <!-- Banner 160x300 (Slot 1) -->
           <script>
-            atOptions = {
-              'key' : '99e39cb202eb1c06f82b275d56a97116',
-              'format' : 'iframe',
-              'height' : 300,
-              'width' : 160,
-              'params' : {}
-            };
+            atOptions = { 'key' : '99e39cb202eb1c06f82b275d56a97116', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
+          </script>
+          <script src="https://www.highperformanceformat.com/99e39cb202eb1c06f82b275d56a97116/invoke.js"></script>
+
+          <!-- Banner 160x300 (Slot 2 - duplicated) -->
+          <script>
+            atOptions = { 'key' : '99e39cb202eb1c06f82b275d56a97116', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
           </script>
           <script src="https://www.highperformanceformat.com/99e39cb202eb1c06f82b275d56a97116/invoke.js"></script>
         </div>
@@ -1853,28 +1893,22 @@
       </div>
 
       <div class="sidebar-ad-right">
-        <div style="position: sticky; top: 10px; display: flex; flex-direction: column; gap: 20px;">
-          <!-- Banner 160x600 -->
+        <div style="position: sticky; top: 10px; display: flex; flex-direction: column; gap: 15px;">
+          <!-- Banner 160x600 (Slot 1) -->
           <script>
-            atOptions = {
-              'key' : '04d44936179470d09273419c63bf435d',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
-            };
+            atOptions = { 'key' : '04d44936179470d09273419c63bf435d', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
           </script>
           <script src="https://www.highperformanceformat.com/04d44936179470d09273419c63bf435d/invoke.js"></script>
 
-          <!-- Banner 160x300 -->
+          <!-- Banner 160x300 (Slot 1) -->
           <script>
-            atOptions = {
-              'key' : '99e39cb202eb1c06f82b275d56a97116',
-              'format' : 'iframe',
-              'height' : 300,
-              'width' : 160,
-              'params' : {}
-            };
+            atOptions = { 'key' : '99e39cb202eb1c06f82b275d56a97116', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
+          </script>
+          <script src="https://www.highperformanceformat.com/99e39cb202eb1c06f82b275d56a97116/invoke.js"></script>
+
+          <!-- Banner 160x300 (Slot 2 - duplicated) -->
+          <script>
+            atOptions = { 'key' : '99e39cb202eb1c06f82b275d56a97116', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
           </script>
           <script src="https://www.highperformanceformat.com/99e39cb202eb1c06f82b275d56a97116/invoke.js"></script>
         </div>
