@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moviezone-wheat.vercel.app/sitemap.xml
