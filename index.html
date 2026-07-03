@@ -423,32 +423,91 @@
         border-radius: 3px;
       }
 
-      /* Responsive Mobile Tweak */
-      @media (max-width: 1024px) {
+      /* ================= RESPONSIVE LAYOUT & PREMIUM TWEAKS ================= */
+      
+      /* Pastikan ad-slots dan ad-boxes tidak merusak layout / overflow horizontal */
+      .ad-slot, .ad-box {
+        max-width: 100%;
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-overflow-scrolling: touch;
+      }
+      .ad-slot::-webkit-scrollbar, .ad-box::-webkit-scrollbar {
+        height: 0px; /* Sembunyikan scrollbar agar bersih */
+      }
+      .ad-slot iframe, .ad-box iframe {
+        flex-shrink: 0;
+      }
+
+      /* Desktop Medium & Tablet Landscape (1025px - 1200px) */
+      @media (max-width: 1200px) {
         .page-layout {
-          grid-template-columns: 1fr;
-          padding: 15px;
+          grid-template-columns: 1fr; /* Sembunyikan sidebar di tablet/layar kecil */
+          padding: 20px 25px;
         }
-        .sidebar-ad-left,
-        .sidebar-ad-right {
+        .sidebar-ad-left, .sidebar-ad-right {
           display: none;
-        } /* Hilangkan vertikal samping di HP biar ga rusak */
-        .top-bar,
-        .nav-container,
-        .sub-nav-container {
-          padding-left: 15px;
-          padding-right: 15px;
         }
+      }
+
+      /* Tablet Portrait & Mobile (max-width: 768px) */
+      @media (max-width: 768px) {
         .top-bar {
           flex-direction: column;
           text-align: center;
+          padding: 15px 20px;
         }
         .search-bar {
-          max-width: 100%;
           width: 100%;
+          max-width: 100%;
         }
+        
+        /* Premium horizontal scroll menu di mobile (seperti netflix/prime) */
+        .nav-container {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 0 15px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; /* Firefox */
+        }
+        .nav-container::-webkit-scrollbar {
+          display: none; /* Chrome/Safari */
+        }
+        .nav-container li {
+          flex: 0 0 auto;
+        }
+        .nav-container li a {
+          white-space: nowrap;
+          padding: 12px 15px;
+          font-size: 13px;
+        }
+
+        .sub-nav-container {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 0 15px;
+          gap: 15px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+        .sub-nav-container::-webkit-scrollbar {
+          display: none;
+        }
+        .sub-nav-container span {
+          white-space: nowrap;
+          flex: 0 0 auto;
+        }
+
         h1 {
           font-size: 22px;
+        }
+        h2 {
+          font-size: 18px;
+          margin: 25px 0 15px 0;
         }
         .btn-stream {
           width: 100%;
@@ -461,7 +520,34 @@
           gap: 10px;
         }
         .movie-poster {
-          height: 190px;
+          height: 185px;
+        }
+      }
+
+      /* Extra Small Mobile (max-width: 480px) */
+      @media (max-width: 480px) {
+        .page-layout {
+          padding: 10px 10px;
+        }
+        .movie-grid {
+          grid-template-columns: repeat(2, 1fr); /* Paksa 2 kolom di HP layar kecil agar pas */
+          gap: 8px;
+        }
+        .movie-poster {
+          height: 175px;
+        }
+        .movie-title {
+          font-size: 12px;
+          padding: 8px 5px;
+        }
+        .share-container {
+          gap: 5px;
+        }
+        .share-btn {
+          flex: 1 1 calc(50% - 5px);
+          font-size: 11px;
+          padding: 8px 10px;
+          justify-content: center;
         }
       }
     </style>
