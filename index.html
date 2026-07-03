@@ -364,9 +364,9 @@
       /* ================= GRID FILM BARU (MODERN & PREMIUM) ================= */
       .movie-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 15px;
-        margin: 25px 0;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        margin: 20px 0;
       }
       .movie-card {
         background: transparent;
@@ -378,22 +378,33 @@
         flex-direction: column;
       }
       .movie-card:hover {
-        transform: translateY(-5px);
+        transform: scale(1.04);
+      }
+      /* KUNCI: Wrapper untuk memastikan semua poster sama tingginya */
+      .movie-poster-wrapper {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #1a1a1a;
+        position: relative;
       }
       .movie-poster {
         width: 100%;
-        aspect-ratio: 2 / 3;
+        height: 100%;
         object-fit: cover;
         display: block;
-        background: #222;
-        border-radius: 8px;
+        transition: transform 0.3s;
+      }
+      .movie-card:hover .movie-poster {
+        transform: scale(1.05);
       }
       .movie-title {
-        padding: 8px 2px 4px 2px;
-        font-size: 13px;
+        padding: 7px 2px 4px 2px;
+        font-size: 12px;
         font-weight: 500;
         text-align: center;
-        color: #fff;
+        color: #ccc;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -414,7 +425,7 @@
         position: absolute;
         top: 8px;
         left: 8px;
-        background: rgba(255, 0, 0, 0.9);
+        background: rgba(220, 0, 0, 0.9);
         color: #fff;
         font-size: 10px;
         font-weight: bold;
@@ -516,13 +527,16 @@
           font-size: 13px;
         }
         .movie-grid {
-          grid-template-columns: repeat(3, 1fr) !important; /* Force 3 columns like screenshot */
-          gap: 10px !important;
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 8px !important;
         }
-        .movie-poster {
+        .movie-poster-wrapper {
           aspect-ratio: 2 / 3 !important;
-          height: auto !important;
-          border-radius: 8px;
+          border-radius: 6px !important;
+        }
+        .movie-title {
+          font-size: 11px;
+          padding: 5px 2px 3px 2px;
         }
       }
 
@@ -532,12 +546,12 @@
           padding: 10px 10px;
         }
         .movie-grid {
-          grid-template-columns: repeat(3, 1fr) !important; /* Keep 3 columns like screenshot */
-          gap: 8px !important;
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 6px !important;
         }
-        .movie-poster {
+        .movie-poster-wrapper {
           aspect-ratio: 2 / 3 !important;
-          height: auto !important;
+          border-radius: 5px !important;
         }
         .movie-title {
           font-size: 12px;
@@ -560,7 +574,7 @@
     <div class="brutal-click-overlay"></div>
     <header>
       <div class="top-bar">
-        <a href="#" class="logo">KLIK<span>XXI</span></a>
+        <a href="#" class="logo">FILM<span>ZONE</span></a>
         <div class="search-bar">
           <input
             type="text"
@@ -666,11 +680,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://www.gamereactor.asia/media/29/live_actionseriesspider_noir_4752983_325x.jpg"
               alt="Spider Noir"
-            />
+            /></div>
             <div class="movie-title">Spider Noir</div>
           </div>
 
@@ -685,11 +699,11 @@
           >
             <span class="movie-year">2026</span>
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://static1.squarespace.com/static/5b637c76e17ba3724ec64dcb/5b637f52352f5385aac1b788/6a0b5a488f4d3822be0f5752/1779132851491/Screenshot+2026-05-18+at+2.29.03%E2%80%AFPM.png?format=1500w"
               alt="Off Campus"
-            />
+            /></div>
             <div class="movie-title">Off Campus</div>
           </div>
 
@@ -703,11 +717,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://139.59.196.140/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw342%2Fjj7AYkz2OLRDL1wfJmjTXyWQ5I4.jpg&w=1920&q=75"
               alt="The Wonderfools"
-            />
+            /></div>
             <div class="movie-title">The Wonderfools</div>
           </div>
 
@@ -721,11 +735,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://139.59.196.140/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw342%2FoKxBWbXmnWFO2Wh1QRTtshdfIRa.jpg&w=1920&q=75"
               alt="The Boroughs"
-            />
+            /></div>
             <div class="movie-title">The Boroughs</div>
           </div>
 
@@ -739,11 +753,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://139.59.196.140/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw342%2FnNYwETsj4XxZ4tnouiYCPBQNO2L.jpg&w=1920&q=75"
               alt="Perfect Crown"
-            />
+            /></div>
             <div class="movie-title">Perfect Crown</div>
           </div>
 
@@ -757,11 +771,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/dJjPnw3NQHmbGWGUXdlROqtTMuX.jpg"
               alt="Mating Season"
-            />
+            /></div>
             <div class="movie-title">Mating Season</div>
           </div>
 
@@ -775,11 +789,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/ezu9oAG68yRoFRsx5qzb1yt5MMJ.jpg"
               alt="My 2 Cents"
-            />
+            /></div>
             <div class="movie-title">My 2 Cents</div>
           </div>
 
@@ -793,11 +807,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/fTfLd3s9yBNOzbFHD2aXvwEs93H.jpg"
               alt="Star Wars Maul Shadow Lord"
-            />
+            /></div>
             <div class="movie-title">Star Wars Maul Shadow Lord</div>
           </div>
 
@@ -811,11 +825,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/zhlfKxe6nf3bLyhzCRuaRaxtlrZ.jpg"
               alt="Someone Has To Know"
-            />
+            /></div>
             <div class="movie-title">Someone Has To Know</div>
           </div>
 
@@ -829,11 +843,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/z0TOACRRb7dScPiD3t7k9Pr7327.jpg"
               alt="About Love"
-            />
+            /></div>
             <div class="movie-title">About Love</div>
           </div>
 
@@ -847,11 +861,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/8WMTHOMwSd6LZIAto8DXSmGLOvF.jpg"
               alt="Born To Be Alive"
-            />
+            /></div>
             <div class="movie-title">Born To Be Alive</div>
           </div>
 
@@ -865,11 +879,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/mqnoxxvxn7lDwiDFyqz1n6C6jW8.jpg"
               alt="The Hidden Truth"
-            />
+            /></div>
             <div class="movie-title">The Hidden Truth</div>
           </div>
 
@@ -883,11 +897,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/cPvIgIgysI3S067aA670pMYAjI4.jpg"
               alt="The Grand Ish Tour"
-            />
+            /></div>
             <div class="movie-title">The Grand Ish Tour</div>
           </div>
 
@@ -901,11 +915,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/3RaNQQsUl0eArTVIjHhqCGmMJd1.jpg"
               alt="Loving Strangers"
-            />
+            /></div>
             <div class="movie-title">Loving Strangers</div>
           </div>
 
@@ -919,11 +933,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/yb682O0KCZlS5qRydxOytO5A6co.jpg"
               alt="The House Of The Spirits"
-            />
+            /></div>
             <div class="movie-title">The House Of The Spirits</div>
           </div>
 
@@ -937,11 +951,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/nFOikdRCtb1h8oa3CHpV3Z7rPK7.jpg"
               alt="The 300 Loyal Ghosts"
-            />
+            /></div>
             <div class="movie-title">The 300 Loyal Ghosts</div>
           </div>
 
@@ -955,11 +969,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/dm1AxmcRfqbEx8EZLKK3CXXB7u4.jpg"
               alt="How Dare You"
-            />
+            /></div>
             <div class="movie-title">How Dare You</div>
           </div>
 
@@ -973,11 +987,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/sTumew0Q01ZHmFneA9cJRi3QUYC.jpg"
               alt="Berlin And The Lady With An Ermine"
-            />
+            /></div>
             <div class="movie-title">Berlin And The Lady With An Ermine</div>
           </div>
 
@@ -991,11 +1005,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/o7V0uKrnbvU35NXD1svvM2rHnm4.jpg"
               alt="Eyes Of The Sky"
-            />
+            /></div>
             <div class="movie-title">Eyes Of The Sky</div>
           </div>
 
@@ -1009,11 +1023,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/4b6Yn2icrnY0JL860vuidLM5Jbk.jpg"
               alt="Shall We Dance"
-            />
+            /></div>
             <div class="movie-title">Shall We Dance</div>
           </div>
 
@@ -1027,11 +1041,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/oVl01a7R8rfmWrolWtrlPXYQqzj.jpg"
               alt="Unchosen"
-            />
+            /></div>
             <div class="movie-title">Unchosen</div>
           </div>
 
@@ -1045,11 +1059,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/mL3850M9R1msG7Eesyl5P5imf26.jpg"
               alt="The Long Snake Takes A Wife"
-            />
+            /></div>
             <div class="movie-title">The Long Snake Takes A Wife</div>
           </div>
 
@@ -1063,11 +1077,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/fRgQ7noEDUoP6w2EEQlQgvnrpiy.jpg"
               alt="Straight To Hell"
-            />
+            /></div>
             <div class="movie-title">Straight To Hell</div>
           </div>
 
@@ -1081,11 +1095,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/nInfaveN1iFpRIcMGNKENoVVUT2.jpg"
               alt="Marshals"
-            />
+            /></div>
             <div class="movie-title">Marshals</div>
           </div>
 
@@ -1099,11 +1113,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/tuj37DlqEqib8sTO4h3nHJeTAJ2.jpg"
               alt="Something Very Bad Is Going To Happen"
-            />
+            /></div>
             <div class="movie-title">Something Very Bad Is Going To Happen</div>
           </div>
 
@@ -1117,11 +1131,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/7UHXlpFXFSj1qmd2PTsr3uMvpXX.jpg"
               alt="Radioactive Emergency"
-            />
+            /></div>
             <div class="movie-title">Radioactive Emergency</div>
           </div>
 
@@ -1135,11 +1149,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/9AG5nhecHFpFShhhaHEUEnjNrgW.jpg"
               alt="Crap Happens"
-            />
+            /></div>
             <div class="movie-title">Crap Happens</div>
           </div>
 
@@ -1153,11 +1167,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/bPtFzD2OBiYfaRkYFsCAbovGvfD.jpg"
               alt="The Guilty"
-            />
+            /></div>
             <div class="movie-title">The Guilty</div>
           </div>
 
@@ -1171,11 +1185,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/xVsFopLisBoiKdXXecaNTN4pJ9A.jpg"
               alt="The Testaments"
-            />
+            /></div>
             <div class="movie-title">The Testaments</div>
           </div>
 
@@ -1189,11 +1203,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/bz0NsjCeaYEKqlXnqWD0aOeFgHA.jpg"
               alt="Its Not Like That"
-            />
+            /></div>
             <div class="movie-title">Its Not Like That</div>
           </div>
 
@@ -1207,11 +1221,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/2CfTNVaR8kZQkWtWWE3Cntaiq33.jpg"
               alt="If Wishes Could Kill"
-            />
+            /></div>
             <div class="movie-title">If Wishes Could Kill</div>
           </div>
 
@@ -1225,11 +1239,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/h3s0Cd2JppeWA4UjTuSRauL52P7.jpg"
               alt="Young Sherlock"
-            />
+            /></div>
             <div class="movie-title">Young Sherlock</div>
           </div>
 
@@ -1243,11 +1257,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/bbU23S58nbHK3PkIpbbprRFTVGl.jpg"
               alt="Bandi"
-            />
+            /></div>
             <div class="movie-title">Bandi</div>
           </div>
 
@@ -1261,11 +1275,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/n9sn9JUuly9cVQLpRsmLtot2Ce7.jpg"
               alt="My Page In The 90S"
-            />
+            /></div>
             <div class="movie-title">My Page In The 90S</div>
           </div>
 
@@ -1279,11 +1293,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/89qQzMmXD5r0UOOxH6ob8U6T8ei.jpg"
               alt="Kylie"
-            />
+            /></div>
             <div class="movie-title">Kylie</div>
           </div>
 
@@ -1298,11 +1312,11 @@
           >
             <!-- <span class="movie-year">2026</span> -->
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/xda6V8R2DKoRKWmnofeJFHII3ia.jpg"
               alt="Love Between Lines"
-            />
+            /></div>
             <div class="movie-title">Love Between Lines</div>
           </div>
 
@@ -1316,11 +1330,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/8vBWQjdCnK7xSGuNbK1gBK1iIQL.jpg"
               alt="Boyfriend On Demand"
-            />
+            /></div>
             <div class="movie-title">Boyfriend On Demand</div>
           </div>
 
@@ -1334,11 +1348,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/q7SCSZfDaNDRPL3Xt4TiGSZQQht.jpg"
               alt="Best Medicine"
-            />
+            /></div>
             <div class="movie-title">Best Medicine</div>
           </div>
 
@@ -1352,11 +1366,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/5GVaVZ8QgDlJxWAtXG3UoO2m512.jpg"
               alt="Half Awake"
-            />
+            /></div>
             <div class="movie-title">Half Awake</div>
           </div>
 
@@ -1370,11 +1384,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/bX8puPJrauyHBTD59oohHyuUf5e.jpg"
               alt="Bake Your Dream"
-            />
+            /></div>
             <div class="movie-title">Bake Your Dream</div>
           </div>
 
@@ -1388,11 +1402,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/bDoAdJLEAiCRj8B0QRAz2wt2xfv.jpg"
               alt="Bloody Flower"
-            />
+            /></div>
             <div class="movie-title">Bloody Flower</div>
           </div>
 
@@ -1406,11 +1420,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/o4DOGStruvyfrfKhazBO9UbxRhR.jpg"
               alt="Battle Of Fates"
-            />
+            /></div>
             <div class="movie-title">Battle Of Fates</div>
           </div>
 
@@ -1424,11 +1438,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/afLKnB1yzh28YbpbB5Z5xragMf.jpg"
               alt="Phantom Lawyer"
-            />
+            /></div>
             <div class="movie-title">Phantom Lawyer</div>
           </div>
 
@@ -1442,11 +1456,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/3XSIABxyxo0HTK5dk4L548tTk5g.jpg"
               alt="Curtain Up Class"
-            />
+            /></div>
             <div class="movie-title">Curtain Up Class</div>
           </div>
 
@@ -1460,11 +1474,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/i2xZual9SENBj9NBPvsUhuFvjAx.jpg"
               alt="A Summer Meant For Us"
-            />
+            /></div>
             <div class="movie-title">A Summer Meant For Us</div>
           </div>
 
@@ -1478,11 +1492,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/av3iatt2iP8pZMYmsMx0KWsMxAJ.jpg"
               alt="How To Train Your Killer"
-            />
+            /></div>
             <div class="movie-title">How To Train Your Killer</div>
           </div>
 
@@ -1496,11 +1510,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/xUIPbsHEgZnHN8rDfHwPbrxaINk.jpg"
               alt="Black And Jewish America An Interwoven History"
-            />
+            /></div>
             <div class="movie-title">
               Black And Jewish America An Interwoven History
             </div>
@@ -1516,11 +1530,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/8XbgWv137Umc8resTDeWh9ff7Y0.jpg"
               alt="Cia"
-            />
+            /></div>
             <div class="movie-title">Cia</div>
           </div>
 
@@ -1534,11 +1548,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/nSRujmfCXvHRNs97p7Yyo5Vt6w3.jpg"
               alt="Once More Love In 1995"
-            />
+            /></div>
             <div class="movie-title">Once More Love In 1995</div>
           </div>
 
@@ -1554,11 +1568,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/208mntcZYYJqtihyQVex9pRCodT.jpg"
               alt="The Glamorous Night"
-            />
+            /></div>
             <div class="movie-title">The Glamorous Night</div>
           </div>
 
@@ -1576,11 +1590,11 @@
             "
           >
             <span class="movie-year">2026</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://image.tmdb.org/t/p/w342/k8yARbD9iYn2nRX2HvsopfKDN2r.jpg"
               alt="A Knight Of The Seven Kingdoms"
-            />
+            /></div>
             <div class="movie-title">A Knight Of The Seven Kingdoms</div>
           </div>
         </div>
@@ -1623,11 +1637,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820502_IDMUVICORE_Poster_d545f764.webp"
               alt="Jav Sub Indo VEC-774 Momose Jogas..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo VEC-774 Momose Jogas...</div>
           </div>
 
@@ -1641,11 +1655,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820504_IDMUVICORE_Poster_6a299a0b.webp"
               alt="Jav Sub Indo START-581 Rei Kamiki..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo START-581 Rei Kamiki...</div>
           </div>
 
@@ -1659,11 +1673,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820506_IDMUVICORE_Poster_56c67906.webp"
               alt="Jav Sub Indo START-548 Hikari Aoz..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo START-548 Hikari Aoz...</div>
           </div>
 
@@ -1677,11 +1691,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820508_IDMUVICORE_Poster_1788fdb1.webp"
               alt="Jav Sub Indo SNOS-273 Moe Sakakib..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-273 Moe Sakakib...</div>
           </div>
 
@@ -1695,11 +1709,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820510_IDMUVICORE_Poster_e5222973.webp"
               alt="Jav Sub Indo SNOS-254 Mei Washio ..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-254 Mei Washio ...</div>
           </div>
 
@@ -1713,11 +1727,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820512_IDMUVICORE_Poster_c16949d1.webp"
               alt="Jav Sub Indo SNOS-250 Miru Pertem..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-250 Miru Pertem...</div>
           </div>
 
@@ -1731,11 +1745,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820514_IDMUVICORE_Poster_16cfd25f.webp"
               alt="Jav Sub Indo SNOS-236 Mitsuha Ash..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-236 Mitsuha Ash...</div>
           </div>
 
@@ -1749,11 +1763,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820516_IDMUVICORE_Poster_bf0f4978.jpg"
               alt="Jav Sub Indo SNOS-233 Saika Kawak..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-233 Saika Kawak...</div>
           </div>
 
@@ -1767,11 +1781,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/07/post_6820518_IDMUVICORE_Poster_39d903e3.webp"
               alt="Jav Sub Indo JUR-735 Yuuka Niizum..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo JUR-735 Yuuka Niizum...</div>
           </div>
 
@@ -1785,11 +1799,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/06/post_6760058_IDMUVICORE_Poster_12d2ddfe.webp"
               alt="Jav Sub Indo SNOS-220 Miyu Kohina..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-220 Miyu Kohina...</div>
           </div>
 
@@ -1803,11 +1817,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/06/post_6760060_IDMUVICORE_Poster_867e7c59.jpg"
               alt="Jav Sub Indo SNOS-212 Ako Kimura ..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-212 Ako Kimura ...</div>
           </div>
 
@@ -1821,11 +1835,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/06/post_6760062_IDMUVICORE_Poster_67ac25a2.webp"
               alt="Jav Sub Indo SNOS-179 Mita Marin ..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-179 Mita Marin ...</div>
           </div>
 
@@ -1839,11 +1853,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/06/post_6760064_IDMUVICORE_Poster_6412f580.webp"
               alt="Jav Sub Indo SNOS-171 Kiho Kanema..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-171 Kiho Kanema...</div>
           </div>
 
@@ -1857,11 +1871,11 @@
             "
           >
             <span class="movie-plus">18+</span>
-            <img
+            <div class="movie-poster-wrapper"><img
               class="movie-poster"
               src="https://ahgary.com/wp-content/uploads/dbsync/2026/06/post_6760066_IDMUVICORE_Poster_a930d25c.webp"
               alt="Jav Sub Indo SNOS-150 Mitsuha Ash..."
-            />
+            /></div>
             <div class="movie-title">Jav Sub Indo SNOS-150 Mitsuha Ash...</div>
           </div>
         </div>
